@@ -16,7 +16,6 @@
 
 @implementation SHDCircularView{
 	UIImageView *gridImage;
-	UIView *centerCircleView;
 
 	NSMutableArray *outerPlaceholderLayersArray;
 	UIView *innerCircleView;
@@ -41,17 +40,15 @@
 #pragma mark - Default Setup
 
 - (void)__basicInit{
-	_generalObjectsArray = [[NSMutableArray alloc] init];
 	gridImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imgGrid.png"]];
-
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, gridImage.frame.size.width, gridImage.frame.size.height);
 
-	gridImage.userInteractionEnabled = YES;
 	gridImage.frame = CGRectMake(0, 0, gridImage.frame.size.width, gridImage.frame.size.height);
 	[self addSubview:gridImage];
 
 	[self __placeCenterCirle];
 
+	_generalObjectsArray = [[NSMutableArray alloc] init];
 	outerPlaceholderLayersArray = [[NSMutableArray alloc] init];
 	innerPlaceholderLayersArray = [[NSMutableArray alloc] init];
 	innerCircleViewsArray = [[NSMutableArray alloc] init];
@@ -67,7 +64,7 @@
 }
 
 - (void)__placeCenterCirle{
-	centerCircleView = [[UIView alloc] initWithFrame:CGRectMake(floorf((gridImage.frame.size.width - kUserCenterAvatarRadius) / 2), floorf((gridImage.frame.size.height - kUserCenterAvatarRadius) / 2) - 5, kUserCenterAvatarRadius, kUserCenterAvatarRadius)];
+	UIView *centerCircleView = [[UIView alloc] initWithFrame:CGRectMake(floorf((gridImage.frame.size.width - kUserCenterAvatarRadius) / 2), floorf((gridImage.frame.size.height - kUserCenterAvatarRadius) / 2) - 5, kUserCenterAvatarRadius, kUserCenterAvatarRadius)];
 	centerCircleView.clipsToBounds = YES;
 	centerCircleView.layer.cornerRadius = kUserCenterAvatarRadius / 2;
 	centerCircleView.layer.borderColor = MAIN_TINT_COLOR.CGColor;
@@ -86,7 +83,6 @@
 - (void)__putOuterPlaceholdersInPlace{
 
 	for(int i = 0; i < kMaxOuterPeopleCount; i++) {
-
 		// Construct the image layer which will contain the template image.
 		CALayer *outerPlaceholderLayer = [CALayer layer];
 		outerPlaceholderLayer.frame = CGRectMake(0, 0, kOuterCirlceLayerWidth, kOuterCirlceLayerWidth);
@@ -98,7 +94,6 @@
 		float y = gridImage.frame.size.width / 2.0 - sinf(trig) * (gridImage.frame.size.width - kOuterCircleRatioDifference) /2.0;
 		outerPlaceholderLayer.position = CGPointMake(x, y);
 		outerPlaceholderLayer.contents = (__bridge id)([UIImage imageNamed:@"imgLayerCircle.png"].CGImage);
-
 		outerPlaceholderLayer.cornerRadius = outerPlaceholderLayer.frame.size.width / 2;
 		outerPlaceholderLayer.masksToBounds = YES;
 
@@ -109,7 +104,6 @@
 
 - (void)__putInnerPlaceholdersInPlace{
 	for(int i = 0; i < kInitialInnerPeopleCount; i++) {
-
 		//Construct the image layer which will contain the template image.
 		CALayer *innerPlaceholderLayer = [CALayer layer];
 		innerPlaceholderLayer.frame = CGRectMake(0, 0, kInnerCirlceLayerWidth, kInnerCirlceLayerWidth);
@@ -138,7 +132,6 @@
 		[reverseArray addObject:innerPlaceholderLayersArray[i]];
 	}
 	innerPlaceholderLayersArray = reverseArray;
-
 	[innerPlaceholderLayersArray removeLastObject];
 	[innerPlaceholderLayersArray removeLastObject];
 }
