@@ -39,10 +39,8 @@
 	int currentMemberCount;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-	self = [super initWithFrame:frame];
-	if (self) {
+- (id)initWithFrame:(CGRect)frame{
+	if (self = [super initWithFrame:frame]){
 		[self __basicInit];
 	}
 	return self;
@@ -238,9 +236,9 @@
 	SHDPerson *personObject = mainPersonsArray[currentMemberCount];
 
 	SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:position];
-	[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
+	personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
 	personView.currentObject = personObject;
-	personView.personNameLabel.text = personObject.friendName;
+	personView.personNameLabel.text = personObject.personName;
 	UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[panGesture setMaximumNumberOfTouches:1];
 	[panGesture setMinimumNumberOfTouches:1];
@@ -319,7 +317,7 @@
 
 #pragma mark - Data Mngmnt
 
-- (void)placeOuterArrayObjectsFromArray:(NSArray *)friendsArray{
+- (void)placeOuterCircleObjects:(NSArray *)friendsArray{
 
 	for (SHDDraggablePersonView *tmpView in gridImage.subviews) {
 		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
@@ -339,9 +337,9 @@
 		SHDPerson *personObject = friendsArray[i];
 
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
-		[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
+		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
 		personView.currentObject = personObject;
-		personView.personNameLabel.text = personObject.friendName;
+		personView.personNameLabel.text = personObject.personName;
 		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 		[panGesture setMaximumNumberOfTouches:1];
 		[panGesture setMinimumNumberOfTouches:1];
@@ -354,7 +352,7 @@
 	currentMemberCount = (int)outerPlaceholderLayersArray.count;
 }
 
-- (void)placeInnerArrayObjectsFromArray:(NSArray *)innerPersonsArray{
+- (void)placeInnerCircleObjects:(NSArray *)innerPersonsArray{
 
 	NSArray *ourArray = [NSArray arrayWithArray:innerPersonsArray];
 
@@ -368,12 +366,12 @@
 	[innerCircleViewsArray removeAllObjects];
 	currentInnerArrayIndex = 0;
 
-	for (SHDPerson *tmpperson in ourArray){
+	for (SHDPerson *personObject in ourArray){
 		CALayer *tmpLayer = outerPlaceholderLayersArray[0];
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
-		[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
-		personView.currentObject = tmpperson;
-		personView.personNameLabel.text = tmpperson.friendName;
+		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
+		personView.currentObject = personObject;
+		personView.personNameLabel.text = personObject.personName;
 		[self __placeNewInnerCircleObjectFromView:personView withDistance:10 shouldLoadNewPerson:NO];
 	}
 }

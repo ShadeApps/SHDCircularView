@@ -12,10 +12,8 @@
 
 @implementation SHDDraggablePersonView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+- (id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]){
         [self __basicInit];
     }
     return self;

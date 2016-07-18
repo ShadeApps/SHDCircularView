@@ -12,9 +12,9 @@
 @interface SHDDraggablePersonView : UIView
 
 @property (strong, nonatomic) UIImageView *personImageView;
-@property (nonatomic) CGRect originalViewRect;
 @property (strong, nonatomic) UILabel *personNameLabel;
-
 @property (strong, nonatomic) SHDPerson *currentObject;
+
+@property (nonatomic) CGRect originalViewRect;
 
 @end

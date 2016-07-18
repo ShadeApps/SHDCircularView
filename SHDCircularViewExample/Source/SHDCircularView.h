@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CircularConstants.h"
+#import "SHDPerson.h"
 
 @interface SHDCircularView : UIView <UIGestureRecognizerDelegate>
 
-- (void)placeOuterArrayObjectsFromArray:(NSArray *)friendsArray;
+@property (strong, nonatomic, readonly) NSMutableArray *friendObjectsArray;
 
-- (void)placeInnerArrayObjectsFromArray:(NSArray *)innerFriendsArray;
+- (void)placeOuterCircleObjects:(NSArray *)friendsArray;
 
-@property (strong, nonatomic) NSMutableArray *friendObjectsArray;
+- (void)placeInnerCircleObjects:(NSArray *)innerFriendsArray;
 
 @end

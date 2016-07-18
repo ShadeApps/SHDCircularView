@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "SHDPerson.h"
+
 #import "SHDCircularView.h"
 
 @interface ViewController ()
@@ -28,13 +28,14 @@
 
 	NSMutableArray *mutArr = [NSMutableArray new];
 
-	for (int i = 0; i < 10; i++) {
-		SHDPerson *newFriend = [SHDPerson new];
-		newFriend.friendName = [NSString stringWithFormat:@"Person %i", i];
-		[mutArr addObject:newFriend];
+	for (int i = 0; i < 11; i++) {
+		SHDPerson *newPerson = [SHDPerson new];
+		newPerson.personName = [NSString stringWithFormat:@"Person %i", i];
+		newPerson.personAvatarImageName = [NSString stringWithFormat:@"img%i.png", i];
+		[mutArr addObject:newPerson];
 	}
 
-	[selectorView placeOuterArrayObjectsFromArray:mutArr];
+	[selectorView placeOuterCircleObjects:mutArr];
 }
 
 @end
