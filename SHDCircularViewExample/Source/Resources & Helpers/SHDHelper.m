@@ -42,7 +42,7 @@
 
 #pragma mark - Calculation helpers
 
-+ (float)distanceFromGivenCenter:(CGPoint)centerPoint withCertainPoint:(CGPoint)evaluatedPoint{
++ (float)distanceFromCenter:(CGPoint)centerPoint forPoint:(CGPoint)evaluatedPoint{
 	CGFloat dx = centerPoint.x - evaluatedPoint.x;
 	CGFloat dy = centerPoint.y - evaluatedPoint.y;
 	return sqrt(dx*dx + dy*dy);

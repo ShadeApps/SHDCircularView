@@ -92,7 +92,7 @@
 		outerPlaceholderLayer.frame = CGRectMake(0, 0, kOuterCirlceLayerWidth, kOuterCirlceLayerWidth);
 
 		// Calculate the x and y coordinate. Points go around the outer circle starting at pi = 0.
-		int section = i > kMaxOuterPeopleCount -  1 ? kMaxOuterPeopleCount - 1 : i;
+		NSInteger section = i > kMaxOuterPeopleCount -  1 ? kMaxOuterPeopleCount - 1 : i;
 		float trig = section / (kMaxOuterPeopleCount / 2.0) * M_PI;
 		float x = gridImage.frame.size.width / 2.0 + cosf(trig) * (gridImage.frame.size.width - kOuterCircleRatioDifference) /2.0;
 		float y = gridImage.frame.size.width / 2.0 - sinf(trig) * (gridImage.frame.size.width - kOuterCircleRatioDifference) /2.0;
@@ -115,7 +115,7 @@
 		innerPlaceholderLayer.frame = CGRectMake(0, 0, kInnerCirlceLayerWidth, kInnerCirlceLayerWidth);
 
 		// Calculate the x and y coordinate. Points go around the outer circle starting at pi = 0.
-		int section = i > kInitialInnerPeopleCount -  1 ? kInitialInnerPeopleCount - 1 : i;
+		NSInteger section = i > kInitialInnerPeopleCount -  1 ? kInitialInnerPeopleCount - 1 : i;
 		float trig = section / (kInitialInnerPeopleCount / 2.0) * M_PI;
 		float x = kInnerCirlceViewRadius / 2.0 + cosf(trig) * (kInnerCirlceViewRadius - kInnerCircleRatioDifference) /2.0;
 		float y = kInnerCirlceViewRadius / 2.0 - sinf(trig) * (kInnerCirlceViewRadius - kInnerCircleRatioDifference) /2.0;
@@ -146,7 +146,6 @@
 #pragma mark - Putting small circles in order
 
 - (void)__placeNewInnerCircleObjectFromView:(SHDDraggablePersonView *)originalView withDistance:(CGFloat)distanceFromCenter shouldLoadNewPerson:(BOOL)shouldLoad{
-
 	[_generalObjectsArray addObject:originalView.currentObject];
 
 	if (shouldLoad){
@@ -185,9 +184,8 @@
 	[innerCircleViewsArray addObject:originalView];
 
 	if (innerCircleViewsArray.count > kMaxOuterPeopleCount){
-
-		int rightRange = 1;
-		int targetNumber = (int)innerCircleViewsArray.count - kMaxOuterPeopleCount;
+		NSInteger rightRange = 1;
+		NSInteger targetNumber = innerCircleViewsArray.count - kMaxOuterPeopleCount;
 
 		if (targetNumber < 10) {
 			rightRange = 1;
@@ -198,7 +196,7 @@
 			}
 		}
 
-		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d \npeople", (int)innerCircleViewsArray.count - kMaxOuterPeopleCount]];
+		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%lu \npeople", innerCircleViewsArray.count - kMaxOuterPeopleCount]];
 		[titleText addAttributes:@{NSForegroundColorAttributeName : MAIN_TINT_COLOR_DARK} range:NSMakeRange(0, titleText.length)];
 		[centerCountLabel setAttributedText:titleText];
 	}else{
@@ -226,18 +224,16 @@
 #pragma mark - Private Gesture Methods
 
 - (void)handlePan:(UIPanGestureRecognizer*)sender{
+	if (![sender.view isKindOfClass:[SHDDraggablePersonView class]]) return;
+
 	[self adjustAnchorPointForGestureRecognizer:sender];
-
 	CGPoint translation = [sender translationInView:self];
-
 	[sender.view.superview bringSubviewToFront:sender.view];
 	[sender.view setCenter:CGPointMake([sender.view center].x + translation.x, [sender.view center].y + translation.y)];
 	[sender setTranslation:(CGPoint){0, 0} inView:self];
 
 	if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled){
-		if (![sender.view isKindOfClass:[SHDDraggablePersonView class]]) return;
-
-		CGFloat distance =  [SHDHelper distanceFromGivenCenter:innerCircleView.center withCertainPoint:sender.view.center];
+		CGFloat distance =  [SHDHelper distanceFromCenter:innerCircleView.center forPoint:sender.view.center];
 		if (distance <= kInnerCirlceViewRadius / 2){
 			[self __placeNewInnerCircleObjectFromView:(SHDDraggablePersonView *)sender.view withDistance:distance shouldLoadNewPerson:YES];
 		}else{
@@ -278,7 +274,7 @@
 		[gridImage addSubview:[self personViewWithFrame:tmpLayer.frame object:objects[i] gestureRecognizer:[self mainPanRecognizer]]];
 	}
 
-	currentMemberCount = (int)outerPlaceholderLayersArray.count;
+	currentMemberCount = outerPlaceholderLayersArray.count;
 }
 
 - (void)placeInnerCircleObjects:(NSArray *)objects{
@@ -289,11 +285,7 @@
 
 	for (SHDPerson *personObject in objects){
 		CALayer *tmpLayer = outerPlaceholderLayersArray[0];
-		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
-		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
-		personView.currentObject = personObject;
-		personView.personNameLabel.text = personObject.personName;
-		[self __placeNewInnerCircleObjectFromView:personView withDistance:10 shouldLoadNewPerson:NO];
+		[self __placeNewInnerCircleObjectFromView:[self personViewWithFrame:tmpLayer.frame object:personObject gestureRecognizer:nil] withDistance:10 shouldLoadNewPerson:NO];
 	}
 }
 

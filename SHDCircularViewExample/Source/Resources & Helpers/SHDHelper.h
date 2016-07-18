@@ -18,6 +18,6 @@
 
 #pragma mark - Calculation helpers
 
-+ (float)distanceFromGivenCenter:(CGPoint)centerPoint withCertainPoint:(CGPoint)evaluatedPoint;
++ (float)distanceFromCenter:(CGPoint)centerPoint forPoint:(CGPoint)evaluatedPoint;
 
 @end
