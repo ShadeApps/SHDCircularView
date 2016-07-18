@@ -12,10 +12,10 @@
 
 @interface SHDCircularView : UIView <UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic, readonly) NSMutableArray *friendObjectsArray;
+@property (strong, nonatomic, readonly) NSMutableArray *generalObjectsArray;
 
-- (void)placeOuterCircleObjects:(NSArray *)friendsArray;
+- (void)placeOuterCircleObjects:(NSArray *)objects;
 
-- (void)placeInnerCircleObjects:(NSArray *)innerFriendsArray;
+- (void)placeInnerCircleObjects:(NSArray *)objects;
 
 @end

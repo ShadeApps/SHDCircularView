@@ -34,9 +34,8 @@
 
 	BOOL isDragging;
 
-	int currentInnerArrayIndex;
-
-	int currentMemberCount;
+	NSInteger currentInnerArrayIndex;
+	NSInteger currentMemberCount;
 }
 
 - (id)initWithFrame:(CGRect)frame{
@@ -49,7 +48,7 @@
 #pragma mark - Default Setup
 
 - (void)__basicInit{
-	_friendObjectsArray = [[NSMutableArray alloc] init];
+	_generalObjectsArray = [[NSMutableArray alloc] init];
 
 	gridImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imgGrid.png"]];
 
@@ -146,8 +145,7 @@
 		[innerCircleView.layer addSublayer:innerPlaceholderLayer];
 	}
 
-	//Certain manipulations for the right order of things (know iy's gross, but screw it)
-
+	//Certain manipulations for the right order of things
 	NSMutableArray *reverseArray = [NSMutableArray new];
 	[reverseArray insertObject:innerPlaceholderLayersArray[2] atIndex:0];
 	[reverseArray addObject:innerPlaceholderLayersArray[1]];
@@ -166,13 +164,13 @@
 
 - (void)__placeNewInnerCircleObjectFromView:(SHDDraggablePersonView *)originalView withDistance:(CGFloat)distanceFromCenter shouldLoadNewPerson:(BOOL)shouldLoad{
 
-	[_friendObjectsArray addObject:originalView.currentObject];
+	[_generalObjectsArray addObject:originalView.currentObject];
 
 	if (shouldLoad){
 		[self __loadNewPersonForPosition:originalView.originalViewRect];
 	}
 
-	if (currentInnerArrayIndex >= (int)innerPlaceholderLayersArray.count - 1) currentInnerArrayIndex = 0;
+	if (currentInnerArrayIndex >= innerPlaceholderLayersArray.count - 1) currentInnerArrayIndex = 0;
 
 	originalView.personNameLabel.hidden = YES;
 	originalView.userInteractionEnabled = NO;
@@ -217,7 +215,7 @@
 			}
 		}
 
-		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d \nfriends", (int)innerCircleViewsArray.count - kMaxOuterPeopleCount]];
+		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d \npeople", (int)innerCircleViewsArray.count - kMaxOuterPeopleCount]];
 		[titleText addAttributes:@{NSForegroundColorAttributeName : MAIN_TINT_COLOR_DARK} range:NSMakeRange(0, titleText.length)];
 		[centerCountLabel setAttributedText:titleText];
 	}else{
@@ -317,7 +315,7 @@
 
 #pragma mark - Data Mngmnt
 
-- (void)placeOuterCircleObjects:(NSArray *)friendsArray{
+- (void)placeOuterCircleObjects:(NSArray *)objects{
 
 	for (SHDDraggablePersonView *tmpView in gridImage.subviews) {
 		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
@@ -325,16 +323,16 @@
 		}
 	}
 
-	mainPersonsArray = friendsArray;
+	mainPersonsArray = objects;
 
-	for (int i = 0; i < friendsArray.count; i++) {
+	for (int i = 0; i < objects.count; i++) {
 
 		if (i > outerPlaceholderLayersArray.count - 1){
 			break;
 		}
 
 		CALayer *tmpLayer = outerPlaceholderLayersArray[i];
-		SHDPerson *personObject = friendsArray[i];
+		SHDPerson *personObject = objects[i];
 
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
 		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
@@ -352,9 +350,9 @@
 	currentMemberCount = (int)outerPlaceholderLayersArray.count;
 }
 
-- (void)placeInnerCircleObjects:(NSArray *)innerPersonsArray{
+- (void)placeInnerCircleObjects:(NSArray *)objects{
 
-	NSArray *ourArray = [NSArray arrayWithArray:innerPersonsArray];
+	NSArray *ourArray = [NSArray arrayWithArray:objects];
 
 	for (SHDDraggablePersonView *tmpView in innerCircleView.subviews) {
 		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
@@ -362,7 +360,7 @@
 		}
 	}
 
-	[_friendObjectsArray removeAllObjects];
+	[_generalObjectsArray removeAllObjects];
 	[innerCircleViewsArray removeAllObjects];
 	currentInnerArrayIndex = 0;
 
