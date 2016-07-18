@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40657FCB1D3C5EB000DD63E1 /* SHDFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40657FCA1D3C5EB000DD63E1 /* SHDFunctions.m */; };
+		40657FCB1D3C5EB000DD63E1 /* SHDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */; };
 		40657FCD1D3C644500DD63E1 /* imgPerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FCC1D3C644500DD63E1 /* imgPerson@2x.png */; };
 		40657FD21D3C645100DD63E1 /* imgGrid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FCF1D3C645100DD63E1 /* imgGrid@2x.png */; };
 		40657FD31D3C645100DD63E1 /* imgLayerCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FD01D3C645100DD63E1 /* imgLayerCircle@2x.png */; };
@@ -34,8 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		40657FC91D3C5EB000DD63E1 /* SHDFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDFunctions.h; sourceTree = "<group>"; };
-		40657FCA1D3C5EB000DD63E1 /* SHDFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDFunctions.m; sourceTree = "<group>"; };
+		40657FC91D3C5EB000DD63E1 /* SHDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDHelper.h; sourceTree = "<group>"; };
+		40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDHelper.m; sourceTree = "<group>"; };
 		40657FCC1D3C644500DD63E1 /* imgPerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgPerson@2x.png"; sourceTree = "<group>"; };
 		40657FCF1D3C645100DD63E1 /* imgGrid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x.png"; sourceTree = "<group>"; };
 		40657FD01D3C645100DD63E1 /* imgLayerCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgLayerCircle@2x.png"; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 			children = (
 				40657FD41D3C681F00DD63E1 /* images */,
 				40657FDD1D3D331D00DD63E1 /* CircularConstants.h */,
-				40657FC91D3C5EB000DD63E1 /* SHDFunctions.h */,
-				40657FCA1D3C5EB000DD63E1 /* SHDFunctions.m */,
+				40657FC91D3C5EB000DD63E1 /* SHDHelper.h */,
+				40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */,
 			);
 			path = "Resources & Helpers";
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40C79C401D3C509900833D75 /* ViewController.m in Sources */,
-				40657FCB1D3C5EB000DD63E1 /* SHDFunctions.m in Sources */,
+				40657FCB1D3C5EB000DD63E1 /* SHDHelper.m in Sources */,
 				40C79C3D1D3C509900833D75 /* AppDelegate.m in Sources */,
 				40E7D2C71D3C5364002DEB8A /* SHDCircularView.m in Sources */,
 				40C79C3A1D3C509900833D75 /* main.m in Sources */,

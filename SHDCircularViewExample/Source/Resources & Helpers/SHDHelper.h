@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface SHDFunctions : NSObject
+@interface SHDHelper : NSObject
 
+#pragma mark - Fast UI Helpers
+
++ (void)removeMembersOfClass:(Class)aClass fromSubviewsOfView:(UIView *)view;
 + (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor andDefaultText:(NSString *)text;
+
+#pragma mark - Calculation helpers
+
++ (float)distanceFromGivenCenter:(CGPoint)centerPoint withCertainPoint:(CGPoint)evaluatedPoint;
 
 @end

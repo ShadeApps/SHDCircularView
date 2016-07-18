@@ -8,34 +8,27 @@
 
 #import "SHDCircularView.h"
 #import "SHDDraggablePersonView.h"
-#import "SHDFunctions.h"
+#import "SHDHelper.h"
+
+@interface SHDCircularView () <UIGestureRecognizerDelegate>
+
+@end
 
 @implementation SHDCircularView{
-
 	UIImageView *gridImage;
-
-	UIImageView *userAvatarCenterImage;
-
-	//Outer Circle
+	UIView *centerCircleView;
 
 	NSMutableArray *outerPlaceholderLayersArray;
-
-	//Inner Circle
-
 	UIView *innerCircleView;
-
 	UILabel *centerCountLabel;
 
 	NSMutableArray *innerCircleViewsArray;
-
 	NSMutableArray *innerPlaceholderLayersArray;
-
-	NSArray *mainPersonsArray;
-
-	BOOL isDragging;
 
 	NSInteger currentInnerArrayIndex;
 	NSInteger currentMemberCount;
+
+	NSArray *mainPersonsArray;
 }
 
 - (id)initWithFrame:(CGRect)frame{
@@ -49,7 +42,6 @@
 
 - (void)__basicInit{
 	_generalObjectsArray = [[NSMutableArray alloc] init];
-
 	gridImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imgGrid.png"]];
 
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, gridImage.frame.size.width, gridImage.frame.size.height);
@@ -70,34 +62,25 @@
 	innerCircleView.userInteractionEnabled = NO;
 	[gridImage addSubview:innerCircleView];
 
-	//Outer Circle
-
 	[self __putOuterPlaceholdersInPlace];
-
-	isDragging = NO;
-
-	//Inner Circle
-
 	[self __putInnerPlaceholdersInPlace];
 }
 
 - (void)__placeCenterCirle{
-	userAvatarCenterImage = [[UIImageView alloc] initWithFrame:CGRectMake(floorf((gridImage.frame.size.width - kUserCenterAvatarRadius) / 2), floorf((gridImage.frame.size.height - kUserCenterAvatarRadius) / 2) - 5, kUserCenterAvatarRadius, kUserCenterAvatarRadius)];
-	userAvatarCenterImage.clipsToBounds = YES;
-	userAvatarCenterImage.layer.cornerRadius = kUserCenterAvatarRadius / 2;
-	userAvatarCenterImage.layer.borderColor = MAIN_TINT_COLOR.CGColor;
-	userAvatarCenterImage.layer.borderWidth = 1.0;
-	userAvatarCenterImage.backgroundColor = MAIN_TINT_COLOR;
-	userAvatarCenterImage.contentMode = UIViewContentModeCenter;
-	userAvatarCenterImage.userInteractionEnabled = YES;
-	[gridImage addSubview:userAvatarCenterImage];
+	centerCircleView = [[UIView alloc] initWithFrame:CGRectMake(floorf((gridImage.frame.size.width - kUserCenterAvatarRadius) / 2), floorf((gridImage.frame.size.height - kUserCenterAvatarRadius) / 2) - 5, kUserCenterAvatarRadius, kUserCenterAvatarRadius)];
+	centerCircleView.clipsToBounds = YES;
+	centerCircleView.layer.cornerRadius = kUserCenterAvatarRadius / 2;
+	centerCircleView.layer.borderColor = MAIN_TINT_COLOR.CGColor;
+	centerCircleView.layer.borderWidth = 1.0;
+	centerCircleView.backgroundColor = MAIN_TINT_COLOR;
+	[gridImage addSubview:centerCircleView];
 
-	centerCountLabel = [SHDFunctions labelWithFontName:@"HelveticaNeue-Bold" fontSize:10 fontColor:MAIN_TINT_COLOR_DARK andDefaultText:@"Drag &\nDrop"];
+	centerCountLabel = [SHDHelper labelWithFontName:@"HelveticaNeue-Bold" fontSize:10 fontColor:MAIN_TINT_COLOR_DARK andDefaultText:@"Drag &\nDrop"];
 	centerCountLabel.numberOfLines = 2;
 	[centerCountLabel sizeToFit];
 	centerCountLabel.textAlignment = NSTextAlignmentCenter;
-	centerCountLabel.frame = CGRectMake(0, 0, userAvatarCenterImage.frame.size.width, userAvatarCenterImage.frame.size.height);
-	[userAvatarCenterImage addSubview:centerCountLabel];
+	centerCountLabel.frame = CGRectMake(0, 0, centerCircleView.frame.size.width, centerCircleView.frame.size.height);
+	[centerCircleView addSubview:centerCountLabel];
 }
 
 - (void)__putOuterPlaceholdersInPlace{
@@ -194,7 +177,7 @@
 
 	[innerCircleView bringSubviewToFront:originalView];
 
-	[UIView animateWithDuration:0.2 animations:^{
+	[UIView animateWithDuration:kAnimationDuration animations:^{
 		originalView.frame = CGRectMake(givenObjectLAyer.frame.origin.x, givenObjectLAyer.frame.origin.y, kInnerCirlceLayerWidth, kInnerCirlceLayerWidth);
 		originalView.personImageView.layer.borderColor = MAIN_TINT_COLOR.CGColor;
 	}];
@@ -226,83 +209,50 @@
 }
 
 - (void)__loadNewPersonForPosition:(CGRect)position{
-
-	if (currentMemberCount - 1 >= mainPersonsArray.count - 1) {
+	if (currentMemberCount - 1 >= mainPersonsArray.count - 1){
 		return;
 	}
 
-	SHDPerson *personObject = mainPersonsArray[currentMemberCount];
-
-	SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:position];
-	personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
-	personView.currentObject = personObject;
-	personView.personNameLabel.text = personObject.personName;
-	UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-	[panGesture setMaximumNumberOfTouches:1];
-	[panGesture setMinimumNumberOfTouches:1];
-	[panGesture setCancelsTouchesInView:YES];
-	panGesture.delegate = self;
-	[personView addGestureRecognizer:panGesture];
+	SHDDraggablePersonView *personView = [self personViewWithFrame:position object:mainPersonsArray[currentMemberCount] gestureRecognizer:[self mainPanRecognizer]];
 	[gridImage addSubview:personView];
-	personView.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
 
-	[UIView animateWithDuration:0.2 animations:^{
+	personView.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+	[UIView animateWithDuration:kAnimationDuration animations:^{
 		personView.transform = CGAffineTransformIdentity;
 	}];
-
 	currentMemberCount++;
 }
 
 #pragma mark - Private Gesture Methods
 
 - (void)handlePan:(UIPanGestureRecognizer*)sender{
-
-	if (sender.state == UIGestureRecognizerStateBegan) {
-		isDragging = YES;
-	}
-
 	[self adjustAnchorPointForGestureRecognizer:sender];
 
 	CGPoint translation = [sender translationInView:self];
 
 	[sender.view.superview bringSubviewToFront:sender.view];
-
 	[sender.view setCenter:CGPointMake([sender.view center].x + translation.x, [sender.view center].y + translation.y)];
-
 	[sender setTranslation:(CGPoint){0, 0} inView:self];
 
-	if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
+	if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled){
+		if (![sender.view isKindOfClass:[SHDDraggablePersonView class]]) return;
 
-		if ([sender.view isKindOfClass:[SHDDraggablePersonView class]]){
-
-			CGFloat distance =  [self distanceFromGivenCenter:innerCircleView.center withCertainPoint:sender.view.center];
-
-			if (distance <= kInnerCirlceViewRadius / 2){
-				[self __placeNewInnerCircleObjectFromView:(SHDDraggablePersonView *)sender.view withDistance:distance shouldLoadNewPerson:YES];
-			}else{
-				[UIView animateWithDuration:0.22 animations:^{
-					[(SHDDraggablePersonView *)sender.view setFrame:[(SHDDraggablePersonView *)sender.view originalViewRect]];
-				}];
-			}
+		CGFloat distance =  [SHDHelper distanceFromGivenCenter:innerCircleView.center withCertainPoint:sender.view.center];
+		if (distance <= kInnerCirlceViewRadius / 2){
+			[self __placeNewInnerCircleObjectFromView:(SHDDraggablePersonView *)sender.view withDistance:distance shouldLoadNewPerson:YES];
+		}else{
+			[UIView animateWithDuration:kAnimationDuration animations:^{
+				[(SHDDraggablePersonView *)sender.view setFrame:[(SHDDraggablePersonView *)sender.view originalViewRect]];
+			}];
 		}
-		isDragging = NO;
 	}
-}
-
--(float)distanceFromGivenCenter:(CGPoint)centerPoint withCertainPoint:(CGPoint)evaluatedPoint{
-
-	CGFloat dx = centerPoint.x - evaluatedPoint.x;
-	CGFloat dy = centerPoint.y - evaluatedPoint.y;
-
-	return sqrt(dx*dx + dy*dy);
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
 	return YES;
 }
 
-- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-{
+- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer{
 	if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
 		UIView *piece = self;
 		CGPoint locationInView = [gestureRecognizer locationInView:piece];
@@ -316,55 +266,28 @@
 #pragma mark - Data Mngmnt
 
 - (void)placeOuterCircleObjects:(NSArray *)objects{
-
-	for (SHDDraggablePersonView *tmpView in gridImage.subviews) {
-		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
-			[tmpView removeFromSuperview];
-		}
-	}
-
+	[SHDHelper removeMembersOfClass:[SHDDraggablePersonView class] fromSubviewsOfView:gridImage];
 	mainPersonsArray = objects;
 
-	for (int i = 0; i < objects.count; i++) {
-
+	for (int i = 0; i < objects.count; i++){
 		if (i > outerPlaceholderLayersArray.count - 1){
 			break;
 		}
 
 		CALayer *tmpLayer = outerPlaceholderLayersArray[i];
-		SHDPerson *personObject = objects[i];
-
-		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
-		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
-		personView.currentObject = personObject;
-		personView.personNameLabel.text = personObject.personName;
-		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-		[panGesture setMaximumNumberOfTouches:1];
-		[panGesture setMinimumNumberOfTouches:1];
-		[panGesture setCancelsTouchesInView:YES];
-		panGesture.delegate = self;
-		[personView addGestureRecognizer:panGesture];
-		[gridImage addSubview:personView];
+		[gridImage addSubview:[self personViewWithFrame:tmpLayer.frame object:objects[i] gestureRecognizer:[self mainPanRecognizer]]];
 	}
 
 	currentMemberCount = (int)outerPlaceholderLayersArray.count;
 }
 
 - (void)placeInnerCircleObjects:(NSArray *)objects{
-
-	NSArray *ourArray = [NSArray arrayWithArray:objects];
-
-	for (SHDDraggablePersonView *tmpView in innerCircleView.subviews) {
-		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
-			[tmpView removeFromSuperview];
-		}
-	}
-
+	[SHDHelper removeMembersOfClass:[SHDDraggablePersonView class] fromSubviewsOfView:innerCircleView];
 	[_generalObjectsArray removeAllObjects];
 	[innerCircleViewsArray removeAllObjects];
 	currentInnerArrayIndex = 0;
 
-	for (SHDPerson *personObject in ourArray){
+	for (SHDPerson *personObject in objects){
 		CALayer *tmpLayer = outerPlaceholderLayersArray[0];
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
 		personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
@@ -372,6 +295,26 @@
 		personView.personNameLabel.text = personObject.personName;
 		[self __placeNewInnerCircleObjectFromView:personView withDistance:10 shouldLoadNewPerson:NO];
 	}
+}
+
+#pragma mark - Generating objects
+
+- (UIPanGestureRecognizer *)mainPanRecognizer{
+	UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+	[panGesture setMaximumNumberOfTouches:1];
+	[panGesture setMinimumNumberOfTouches:1];
+	[panGesture setCancelsTouchesInView:YES];
+	panGesture.delegate = self;
+	return panGesture;
+}
+
+- (SHDDraggablePersonView *)personViewWithFrame:(CGRect)frame object:(SHDPerson *)personObject gestureRecognizer:(UIPanGestureRecognizer *)recognizer{
+	SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:frame];
+	personView.personImageView.image = personObject.personAvatarImageName ? [UIImage imageNamed:personObject.personAvatarImageName] : [UIImage imageNamed:@"imgPerson.png"];
+	personView.currentObject = personObject;
+	personView.personNameLabel.text = personObject.personName;
+	if (recognizer) [personView addGestureRecognizer:recognizer];
+	return personView;
 }
 
 @end

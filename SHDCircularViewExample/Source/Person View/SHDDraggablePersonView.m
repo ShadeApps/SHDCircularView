@@ -7,7 +7,7 @@
 //
 
 #import "SHDDraggablePersonView.h"
-#import "SHDFunctions.h"
+#import "SHDHelper.h"
 #import "CircularConstants.h"
 
 @implementation SHDDraggablePersonView
@@ -30,7 +30,7 @@
     
     _personImageView.backgroundColor = MAIN_BACKGROUND_COLOR;
     
-    _personNameLabel = [SHDFunctions labelWithFontName:@"HelveticaNeue-Light" fontSize:10 fontColor:[UIColor whiteColor] andDefaultText:@"Laura"];
+    _personNameLabel = [SHDHelper labelWithFontName:@"HelveticaNeue-Light" fontSize:10 fontColor:[UIColor whiteColor] andDefaultText:@"Laura"];
     _personNameLabel.frame = CGRectMake(0, floorf(self.frame.size.height + _personNameLabel.frame.size.height - 8), self.frame.size.width, _personNameLabel.frame.size.height);
     _personNameLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_personNameLabel];

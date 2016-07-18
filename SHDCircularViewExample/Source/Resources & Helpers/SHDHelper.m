@@ -6,12 +6,22 @@
 //  Copyright © 2016 ShadeApps. All rights reserved.
 //
 
-#import "SHDFunctions.h"
+#import "SHDHelper.h"
 
-@implementation SHDFunctions
+@implementation SHDHelper
+
+#pragma mark - Fast UI Helpers
+
++ (void)removeMembersOfClass:(Class)aClass fromSubviewsOfView:(UIView *)view{
+	for (id object in view.subviews) {
+		if ([object isKindOfClass:[aClass class]]){
+			[object removeFromSuperview];
+		}
+	}
+}
 
 + (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor andDefaultText:(NSString *)text{
-	return [SHDFunctions labelWithFontName:fontName fontSize:fontSize fontColor:fontColor shadowOffset:CGSizeMake(0, 0) shadowColor:[UIColor blackColor] andDefaultText:text];
+	return [SHDHelper labelWithFontName:fontName fontSize:fontSize fontColor:fontColor shadowOffset:CGSizeMake(0, 0) shadowColor:[UIColor blackColor] andDefaultText:text];
 }
 
 + (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor shadowOffset:(CGSize)shadowOffset shadowColor:(UIColor *)shadowColor andDefaultText:(NSString *)text{
@@ -28,6 +38,14 @@
 	tmpLabel.text = text;
 	[tmpLabel sizeToFit];
 	return tmpLabel;
+}
+
+#pragma mark - Calculation helpers
+
++ (float)distanceFromGivenCenter:(CGPoint)centerPoint withCertainPoint:(CGPoint)evaluatedPoint{
+	CGFloat dx = centerPoint.x - evaluatedPoint.x;
+	CGFloat dy = centerPoint.y - evaluatedPoint.y;
+	return sqrt(dx*dx + dy*dy);
 }
 
 @end

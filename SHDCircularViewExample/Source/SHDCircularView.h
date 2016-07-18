@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "CircularConstants.h"
 #import "SHDPerson.h"
 
-@interface SHDCircularView : UIView <UIGestureRecognizerDelegate>
+@interface SHDCircularView : UIView
 
 @property (strong, nonatomic, readonly) NSMutableArray *generalObjectsArray;
 

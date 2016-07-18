@@ -14,6 +14,7 @@
 #define MAIN_BACKGROUND_COLOR [UIColor colorWithRed:0.125 green:0.125 blue:0.125 alpha:1.00]
 
 static const CGFloat kUserCenterAvatarRadius = 58;
+static const CGFloat kAnimationDuration = 0.3;
 
 //Outer Circle
 
