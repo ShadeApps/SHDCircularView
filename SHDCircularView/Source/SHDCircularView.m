@@ -50,21 +50,13 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 
 	NSMutableArray *innerPlaceholderLayersArray;
 
-	NSArray *mainFriendsArray;
-
-	//Dragging BOOL
+	NSArray *mainPersonsArray;
 
 	BOOL isDragging;
 
 	int currentInnerArrayIndex;
 
 	int currentMemberCount;
-
-	UITapGestureRecognizer *userAvatarTapGesture;
-
-	//Data Array
-
-
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -117,11 +109,8 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	userAvatarCenterImage.layer.borderWidth = 1.0;
 	userAvatarCenterImage.backgroundColor = [SHDFunctions colorFromHex:@"f3d530"];
 	userAvatarCenterImage.contentMode = UIViewContentModeCenter;
-	[gridImage addSubview:userAvatarCenterImage];
 	userAvatarCenterImage.userInteractionEnabled = YES;
-
-	userAvatarTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userAvatarTapped)];
-	[userAvatarCenterImage addGestureRecognizer:userAvatarTapGesture];
+	[gridImage addSubview:userAvatarCenterImage];
 
 	centerCountLabel = [SHDFunctions labelWithFontName:@"HelveticaNeue-Bold" fontSize:10 fontColor:@"b9931f" andDefaultText:@"Drag &\nDrop"];
 	centerCountLabel.numberOfLines = 2;
@@ -265,16 +254,16 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 
 - (void)__loadNewPersonForPosition:(CGRect)position{
 
-	if (currentMemberCount - 1 >= mainFriendsArray.count - 1) {
+	if (currentMemberCount - 1 >= mainPersonsArray.count - 1) {
 		return;
 	}
 
-	SHDPerson *friendObject = mainFriendsArray[currentMemberCount];
+	SHDPerson *personObject = mainPersonsArray[currentMemberCount];
 
 	SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:position];
 	[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
-	personView.currentObject = friendObject;
-	personView.personNameLabel.text = friendObject.friendName;
+	personView.currentObject = personObject;
+	personView.personNameLabel.text = personObject.friendName;
 	UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[panGesture setMaximumNumberOfTouches:1];
 	[panGesture setMinimumNumberOfTouches:1];
@@ -362,7 +351,7 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 		}
 	}
 
-	mainFriendsArray = friendsArray;
+	mainPersonsArray = friendsArray;
 
 	for (int i = 0; i < friendsArray.count; i++) {
 
@@ -371,12 +360,12 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 		}
 
 		CALayer *tmpLayer = outerPlaceholderLayersArray[i];
-		SHDPerson *friendObject = friendsArray[i];
+		SHDPerson *personObject = friendsArray[i];
 
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
 		[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
-		personView.currentObject = friendObject;
-		personView.personNameLabel.text = friendObject.friendName;
+		personView.currentObject = personObject;
+		personView.personNameLabel.text = personObject.friendName;
 		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 		[panGesture setMaximumNumberOfTouches:1];
 		[panGesture setMinimumNumberOfTouches:1];
@@ -389,9 +378,9 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	currentMemberCount = (int)outerPlaceholderLayersArray.count;
 }
 
-- (void)placeInnerArrayObjectsFromArray:(NSArray *)innerFriendsArray{
+- (void)placeInnerArrayObjectsFromArray:(NSArray *)innerPersonsArray{
 
-	NSArray *ourArray = [NSArray arrayWithArray:innerFriendsArray];
+	NSArray *ourArray = [NSArray arrayWithArray:innerPersonsArray];
 
 	for (SHDDraggablePersonView *tmpView in innerCircleView.subviews) {
 		if ([tmpView isKindOfClass:[SHDDraggablePersonView class]]) {
@@ -403,19 +392,14 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	[innerCircleViewsArray removeAllObjects];
 	currentInnerArrayIndex = 0;
 
-	for (SHDPerson *tmpfriend in ourArray){
+	for (SHDPerson *tmpperson in ourArray){
 		CALayer *tmpLayer = outerPlaceholderLayersArray[0];
 		SHDDraggablePersonView *personView = [[SHDDraggablePersonView alloc] initWithFrame:tmpLayer.frame];
 		[personView.personImageView setImage:[UIImage imageNamed:@"imgPerson.png"]];
-		personView.currentObject = tmpfriend;
-		personView.personNameLabel.text = tmpfriend.friendName;
+		personView.currentObject = tmpperson;
+		personView.personNameLabel.text = tmpperson.friendName;
 		[self __placeNewInnerCircleObjectFromView:personView withDistance:10 shouldLoadNewPerson:NO];
 	}
 }
-
-- (void)userAvatarTapped{
-
-}
-
 
 @end
