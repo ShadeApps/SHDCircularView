@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40657FCB1D3C5EB000DD63E1 /* SHDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */; };
-		40657FCD1D3C644500DD63E1 /* imgPerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FCC1D3C644500DD63E1 /* imgPerson@2x.png */; };
-		40657FD21D3C645100DD63E1 /* imgGrid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FCF1D3C645100DD63E1 /* imgGrid@2x.png */; };
-		40657FD31D3C645100DD63E1 /* imgLayerCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FD01D3C645100DD63E1 /* imgLayerCircle@2x.png */; };
 		40657FD81D3C695000DD63E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40657FD71D3C695000DD63E1 /* Main.storyboard */; };
 		40657FDA1D3C695600DD63E1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40657FD91D3C695600DD63E1 /* Launch Screen.storyboard */; };
-		40657FDC1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FDB1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png */; };
 		40657FEC1D3D43B000DD63E1 /* img10.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FE11D3D43B000DD63E1 /* img10.png */; };
 		40657FED1D3D43B000DD63E1 /* img9.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FE21D3D43B000DD63E1 /* img9.png */; };
 		40657FEE1D3D43B000DD63E1 /* img8.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FE31D3D43B000DD63E1 /* img8.png */; };
@@ -25,24 +20,22 @@
 		40657FF41D3D43B000DD63E1 /* img2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FE91D3D43B000DD63E1 /* img2.png */; };
 		40657FF51D3D43B000DD63E1 /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FEA1D3D43B000DD63E1 /* img1.png */; };
 		40657FF61D3D43B000DD63E1 /* img0.png in Resources */ = {isa = PBXBuildFile; fileRef = 40657FEB1D3D43B000DD63E1 /* img0.png */; };
+		406580081D3D8E5C00DD63E1 /* SHDDraggablePersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40657FFA1D3D8E5C00DD63E1 /* SHDDraggablePersonView.m */; };
+		406580091D3D8E5C00DD63E1 /* SHDPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 40657FFC1D3D8E5C00DD63E1 /* SHDPerson.m */; };
+		4065800A1D3D8E5C00DD63E1 /* imgGrid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406580001D3D8E5C00DD63E1 /* imgGrid@2x.png */; };
+		4065800B1D3D8E5C00DD63E1 /* imgGrid@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 406580011D3D8E5C00DD63E1 /* imgGrid@2x~ipad.png */; };
+		4065800C1D3D8E5C00DD63E1 /* imgLayerCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406580021D3D8E5C00DD63E1 /* imgLayerCircle@2x.png */; };
+		4065800D1D3D8E5C00DD63E1 /* imgPerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406580031D3D8E5C00DD63E1 /* imgPerson@2x.png */; };
+		4065800E1D3D8E5C00DD63E1 /* SHDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 406580051D3D8E5C00DD63E1 /* SHDHelper.m */; };
+		4065800F1D3D8E5C00DD63E1 /* SHDCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = 406580071D3D8E5C00DD63E1 /* SHDCircularView.m */; };
 		40C79C3A1D3C509900833D75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C79C391D3C509900833D75 /* main.m */; };
 		40C79C3D1D3C509900833D75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C79C3C1D3C509900833D75 /* AppDelegate.m */; };
 		40C79C401D3C509900833D75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C79C3F1D3C509900833D75 /* ViewController.m */; };
-		40E7D2C71D3C5364002DEB8A /* SHDCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E7D2C61D3C5364002DEB8A /* SHDCircularView.m */; };
-		40E7D2D11D3C5388002DEB8A /* SHDDraggablePersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E7D2D01D3C5388002DEB8A /* SHDDraggablePersonView.m */; };
-		40E7D2ED1D3C5497002DEB8A /* SHDPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E7D2EC1D3C5497002DEB8A /* SHDPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		40657FC91D3C5EB000DD63E1 /* SHDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDHelper.h; sourceTree = "<group>"; };
-		40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDHelper.m; sourceTree = "<group>"; };
-		40657FCC1D3C644500DD63E1 /* imgPerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgPerson@2x.png"; sourceTree = "<group>"; };
-		40657FCF1D3C645100DD63E1 /* imgGrid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x.png"; sourceTree = "<group>"; };
-		40657FD01D3C645100DD63E1 /* imgLayerCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgLayerCircle@2x.png"; sourceTree = "<group>"; };
 		40657FD71D3C695000DD63E1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		40657FD91D3C695600DD63E1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		40657FDB1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x~ipad.png"; sourceTree = "<group>"; };
-		40657FDD1D3D331D00DD63E1 /* CircularConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularConstants.h; sourceTree = "<group>"; };
 		40657FE11D3D43B000DD63E1 /* img10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img10.png; sourceTree = "<group>"; };
 		40657FE21D3D43B000DD63E1 /* img9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img9.png; sourceTree = "<group>"; };
 		40657FE31D3D43B000DD63E1 /* img8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img8.png; sourceTree = "<group>"; };
@@ -54,6 +47,19 @@
 		40657FE91D3D43B000DD63E1 /* img2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img2.png; sourceTree = "<group>"; };
 		40657FEA1D3D43B000DD63E1 /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
 		40657FEB1D3D43B000DD63E1 /* img0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img0.png; sourceTree = "<group>"; };
+		40657FF91D3D8E5C00DD63E1 /* SHDDraggablePersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDDraggablePersonView.h; sourceTree = "<group>"; };
+		40657FFA1D3D8E5C00DD63E1 /* SHDDraggablePersonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDDraggablePersonView.m; sourceTree = "<group>"; };
+		40657FFB1D3D8E5C00DD63E1 /* SHDPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDPerson.h; sourceTree = "<group>"; };
+		40657FFC1D3D8E5C00DD63E1 /* SHDPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDPerson.m; sourceTree = "<group>"; };
+		40657FFE1D3D8E5C00DD63E1 /* CircularConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularConstants.h; sourceTree = "<group>"; };
+		406580001D3D8E5C00DD63E1 /* imgGrid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x.png"; sourceTree = "<group>"; };
+		406580011D3D8E5C00DD63E1 /* imgGrid@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x~ipad.png"; sourceTree = "<group>"; };
+		406580021D3D8E5C00DD63E1 /* imgLayerCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgLayerCircle@2x.png"; sourceTree = "<group>"; };
+		406580031D3D8E5C00DD63E1 /* imgPerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgPerson@2x.png"; sourceTree = "<group>"; };
+		406580041D3D8E5C00DD63E1 /* SHDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDHelper.h; sourceTree = "<group>"; };
+		406580051D3D8E5C00DD63E1 /* SHDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDHelper.m; sourceTree = "<group>"; };
+		406580061D3D8E5C00DD63E1 /* SHDCircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDCircularView.h; sourceTree = "<group>"; };
+		406580071D3D8E5C00DD63E1 /* SHDCircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDCircularView.m; sourceTree = "<group>"; };
 		40C79C351D3C509900833D75 /* SHDCircularViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHDCircularViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C79C391D3C509900833D75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40C79C3B1D3C509900833D75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,12 +67,6 @@
 		40C79C3E1D3C509900833D75 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		40C79C3F1D3C509900833D75 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		40C79C491D3C509900833D75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40E7D2C51D3C5364002DEB8A /* SHDCircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDCircularView.h; sourceTree = "<group>"; };
-		40E7D2C61D3C5364002DEB8A /* SHDCircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDCircularView.m; sourceTree = "<group>"; };
-		40E7D2CF1D3C5388002DEB8A /* SHDDraggablePersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDDraggablePersonView.h; sourceTree = "<group>"; };
-		40E7D2D01D3C5388002DEB8A /* SHDDraggablePersonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDDraggablePersonView.m; sourceTree = "<group>"; };
-		40E7D2EB1D3C5497002DEB8A /* SHDPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDPerson.h; sourceTree = "<group>"; };
-		40E7D2EC1D3C5497002DEB8A /* SHDPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,39 +80,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40657FD41D3C681F00DD63E1 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				40657FCF1D3C645100DD63E1 /* imgGrid@2x.png */,
-				40657FDB1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png */,
-				40657FD01D3C645100DD63E1 /* imgLayerCircle@2x.png */,
-				40657FCC1D3C644500DD63E1 /* imgPerson@2x.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		40657FDE1D3D3CE500DD63E1 /* Resources & Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				40657FD41D3C681F00DD63E1 /* images */,
-				40657FDD1D3D331D00DD63E1 /* CircularConstants.h */,
-				40657FC91D3C5EB000DD63E1 /* SHDHelper.h */,
-				40657FCA1D3C5EB000DD63E1 /* SHDHelper.m */,
-			);
-			path = "Resources & Helpers";
-			sourceTree = "<group>";
-		};
-		40657FDF1D3D3F9600DD63E1 /* Person View */ = {
-			isa = PBXGroup;
-			children = (
-				40E7D2CF1D3C5388002DEB8A /* SHDDraggablePersonView.h */,
-				40E7D2D01D3C5388002DEB8A /* SHDDraggablePersonView.m */,
-				40E7D2EB1D3C5497002DEB8A /* SHDPerson.h */,
-				40E7D2EC1D3C5497002DEB8A /* SHDPerson.m */,
-			);
-			path = "Person View";
-			sourceTree = "<group>";
-		};
 		40657FE01D3D3FE200DD63E1 /* Test Avatar Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +96,50 @@
 				40657FE11D3D43B000DD63E1 /* img10.png */,
 			);
 			path = "Test Avatar Images";
+			sourceTree = "<group>";
+		};
+		40657FF71D3D8E5C00DD63E1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				40657FF81D3D8E5C00DD63E1 /* Person View */,
+				40657FFD1D3D8E5C00DD63E1 /* Resources & Helpers */,
+				406580061D3D8E5C00DD63E1 /* SHDCircularView.h */,
+				406580071D3D8E5C00DD63E1 /* SHDCircularView.m */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		40657FF81D3D8E5C00DD63E1 /* Person View */ = {
+			isa = PBXGroup;
+			children = (
+				40657FF91D3D8E5C00DD63E1 /* SHDDraggablePersonView.h */,
+				40657FFA1D3D8E5C00DD63E1 /* SHDDraggablePersonView.m */,
+				40657FFB1D3D8E5C00DD63E1 /* SHDPerson.h */,
+				40657FFC1D3D8E5C00DD63E1 /* SHDPerson.m */,
+			);
+			path = "Person View";
+			sourceTree = "<group>";
+		};
+		40657FFD1D3D8E5C00DD63E1 /* Resources & Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				40657FFE1D3D8E5C00DD63E1 /* CircularConstants.h */,
+				40657FFF1D3D8E5C00DD63E1 /* images */,
+				406580041D3D8E5C00DD63E1 /* SHDHelper.h */,
+				406580051D3D8E5C00DD63E1 /* SHDHelper.m */,
+			);
+			path = "Resources & Helpers";
+			sourceTree = "<group>";
+		};
+		40657FFF1D3D8E5C00DD63E1 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				406580001D3D8E5C00DD63E1 /* imgGrid@2x.png */,
+				406580011D3D8E5C00DD63E1 /* imgGrid@2x~ipad.png */,
+				406580021D3D8E5C00DD63E1 /* imgLayerCircle@2x.png */,
+				406580031D3D8E5C00DD63E1 /* imgPerson@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		40C79C2C1D3C509900833D75 = {
@@ -156,7 +167,7 @@
 				40657FD71D3C695000DD63E1 /* Main.storyboard */,
 				40C79C3E1D3C509900833D75 /* ViewController.h */,
 				40C79C3F1D3C509900833D75 /* ViewController.m */,
-				40E7D2C41D3C531E002DEB8A /* Source */,
+				40657FF71D3D8E5C00DD63E1 /* Source */,
 				40C79C381D3C509900833D75 /* Supporting Files */,
 			);
 			path = SHDCircularViewExample;
@@ -170,17 +181,6 @@
 				40C79C391D3C509900833D75 /* main.m */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		40E7D2C41D3C531E002DEB8A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				40E7D2C51D3C5364002DEB8A /* SHDCircularView.h */,
-				40E7D2C61D3C5364002DEB8A /* SHDCircularView.m */,
-				40657FDF1D3D3F9600DD63E1 /* Person View */,
-				40657FDE1D3D3CE500DD63E1 /* Resources & Helpers */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,20 +242,20 @@
 			files = (
 				40657FDA1D3C695600DD63E1 /* Launch Screen.storyboard in Resources */,
 				40657FEF1D3D43B000DD63E1 /* img7.png in Resources */,
+				4065800A1D3D8E5C00DD63E1 /* imgGrid@2x.png in Resources */,
 				40657FED1D3D43B000DD63E1 /* img9.png in Resources */,
 				40657FF31D3D43B000DD63E1 /* img3.png in Resources */,
 				40657FEE1D3D43B000DD63E1 /* img8.png in Resources */,
 				40657FF01D3D43B000DD63E1 /* img6.png in Resources */,
 				40657FF11D3D43B000DD63E1 /* img5.png in Resources */,
-				40657FD21D3C645100DD63E1 /* imgGrid@2x.png in Resources */,
+				4065800D1D3D8E5C00DD63E1 /* imgPerson@2x.png in Resources */,
 				40657FF21D3D43B000DD63E1 /* img4.png in Resources */,
 				40657FF51D3D43B000DD63E1 /* img1.png in Resources */,
 				40657FD81D3C695000DD63E1 /* Main.storyboard in Resources */,
+				4065800B1D3D8E5C00DD63E1 /* imgGrid@2x~ipad.png in Resources */,
 				40657FF61D3D43B000DD63E1 /* img0.png in Resources */,
-				40657FCD1D3C644500DD63E1 /* imgPerson@2x.png in Resources */,
 				40657FF41D3D43B000DD63E1 /* img2.png in Resources */,
-				40657FD31D3C645100DD63E1 /* imgLayerCircle@2x.png in Resources */,
-				40657FDC1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png in Resources */,
+				4065800C1D3D8E5C00DD63E1 /* imgLayerCircle@2x.png in Resources */,
 				40657FEC1D3D43B000DD63E1 /* img10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,13 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4065800F1D3D8E5C00DD63E1 /* SHDCircularView.m in Sources */,
 				40C79C401D3C509900833D75 /* ViewController.m in Sources */,
-				40657FCB1D3C5EB000DD63E1 /* SHDHelper.m in Sources */,
+				406580091D3D8E5C00DD63E1 /* SHDPerson.m in Sources */,
+				406580081D3D8E5C00DD63E1 /* SHDDraggablePersonView.m in Sources */,
+				4065800E1D3D8E5C00DD63E1 /* SHDHelper.m in Sources */,
 				40C79C3D1D3C509900833D75 /* AppDelegate.m in Sources */,
-				40E7D2C71D3C5364002DEB8A /* SHDCircularView.m in Sources */,
 				40C79C3A1D3C509900833D75 /* main.m in Sources */,
-				40E7D2D11D3C5388002DEB8A /* SHDDraggablePersonView.m in Sources */,
-				40E7D2ED1D3C5497002DEB8A /* SHDPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
