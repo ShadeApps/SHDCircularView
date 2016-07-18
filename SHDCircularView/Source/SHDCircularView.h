@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircularConstants.h"
 
 @interface SHDCircularView : UIView <UIGestureRecognizerDelegate>
 

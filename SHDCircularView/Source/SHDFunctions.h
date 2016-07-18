@@ -11,7 +11,6 @@
 
 @interface SHDFunctions : NSObject
 
-+ (UIColor *) colorFromHex:(NSString*)stringColor;
-+ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(NSString *)fontColor andDefaultText:(NSString *)text;
++ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor andDefaultText:(NSString *)text;
 
 @end

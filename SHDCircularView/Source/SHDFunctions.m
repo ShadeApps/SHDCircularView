@@ -55,18 +55,18 @@
 	return [UIColor colorWithRed:red / 255.0f green:green / 255.0f blue:blue / 255.0f alpha:alpha];
 }
 
-+ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(NSString *)fontColor andDefaultText:(NSString *)text{
-	return [SHDFunctions labelWithFontName:fontName fontSize:fontSize fontColor:fontColor shadowOffset:CGSizeMake(0, 0) shadowColor:@"#000000" andDefaultText:text];
++ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor andDefaultText:(NSString *)text{
+	return [SHDFunctions labelWithFontName:fontName fontSize:fontSize fontColor:fontColor shadowOffset:CGSizeMake(0, 0) shadowColor:[UIColor blackColor] andDefaultText:text];
 }
 
-+ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(NSString *)fontColor shadowOffset:(CGSize)shadowOffset shadowColor:(NSString *)shadowColor andDefaultText:(NSString *)text{
++ (UILabel *)labelWithFontName:(NSString *)fontName fontSize:(float)fontSize fontColor:(UIColor *)fontColor shadowOffset:(CGSize)shadowOffset shadowColor:(UIColor *)shadowColor andDefaultText:(NSString *)text{
 	UILabel *tmpLabel = [[UILabel alloc] init];
 	[tmpLabel setBackgroundColor:[UIColor clearColor]];
 	tmpLabel.font = [UIFont fontWithName:fontName size:fontSize];
-	tmpLabel.textColor = [SHDFunctions colorFromHex:fontColor withAlpha:1.0f];
+	tmpLabel.textColor = fontColor;
 
 	if (!CGSizeEqualToSize(shadowOffset, CGSizeZero)){
-		tmpLabel.shadowColor = [SHDFunctions colorFromHex:shadowColor withAlpha:1.0f];
+		tmpLabel.shadowColor = shadowColor;
 		tmpLabel.shadowOffset = shadowOffset;
 	}
 

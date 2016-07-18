@@ -10,26 +10,6 @@
 #import "SHDDraggablePersonView.h"
 #import "SHDFunctions.h"
 
-static const CGFloat kUserCenterAvatarRadius = 58;
-
-//Outer Circle
-
-static const CGFloat kOuterCircleRatioDifference = 40;
-
-static const int kMaxOuterPeopleCount = 8;
-
-static const CGFloat kOuterCirlceLayerWidth = 45;
-
-// Inner Circle
-
-static const int kInitialInnerPeopleCount = 8;
-
-static const CGFloat kInnerCirlceViewRadius = 168;
-
-static const CGFloat kInnerCirlceLayerWidth = 34;
-
-static const CGFloat kInnerCircleRatioDifference = 58;
-
 @implementation SHDCircularView{
 
 	UIImageView *gridImage;
@@ -74,11 +54,14 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	_friendObjectsArray = [[NSMutableArray alloc] init];
 
 	gridImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imgGrid.png"]];
-	gridImage.frame = CGRectMake(floorf((self.frame.size.width - gridImage.frame.size.width) / 2), floorf((self.frame.size.height - gridImage.frame.size.height) / 2), gridImage.frame.size.width, gridImage.frame.size.height);
+
+	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, gridImage.frame.size.width, gridImage.frame.size.height);
+
 	gridImage.userInteractionEnabled = YES;
+	gridImage.frame = CGRectMake(0, 0, gridImage.frame.size.width, gridImage.frame.size.height);
 	[self addSubview:gridImage];
 
-	[self __placeUserImageAtCenter];
+	[self __placeCenterCirle];
 
 	outerPlaceholderLayersArray = [[NSMutableArray alloc] init];
 	innerPlaceholderLayersArray = [[NSMutableArray alloc] init];
@@ -101,18 +84,18 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	[self __putInnerPlaceholdersInPlace];
 }
 
-- (void)__placeUserImageAtCenter{
+- (void)__placeCenterCirle{
 	userAvatarCenterImage = [[UIImageView alloc] initWithFrame:CGRectMake(floorf((gridImage.frame.size.width - kUserCenterAvatarRadius) / 2), floorf((gridImage.frame.size.height - kUserCenterAvatarRadius) / 2) - 5, kUserCenterAvatarRadius, kUserCenterAvatarRadius)];
 	userAvatarCenterImage.clipsToBounds = YES;
 	userAvatarCenterImage.layer.cornerRadius = kUserCenterAvatarRadius / 2;
-	userAvatarCenterImage.layer.borderColor = [SHDFunctions colorFromHex:@"f3d530"].CGColor;
+	userAvatarCenterImage.layer.borderColor = MAIN_TINT_COLOR.CGColor;
 	userAvatarCenterImage.layer.borderWidth = 1.0;
-	userAvatarCenterImage.backgroundColor = [SHDFunctions colorFromHex:@"f3d530"];
+	userAvatarCenterImage.backgroundColor = MAIN_TINT_COLOR;
 	userAvatarCenterImage.contentMode = UIViewContentModeCenter;
 	userAvatarCenterImage.userInteractionEnabled = YES;
 	[gridImage addSubview:userAvatarCenterImage];
 
-	centerCountLabel = [SHDFunctions labelWithFontName:@"HelveticaNeue-Bold" fontSize:10 fontColor:@"b9931f" andDefaultText:@"Drag &\nDrop"];
+	centerCountLabel = [SHDFunctions labelWithFontName:@"HelveticaNeue-Bold" fontSize:10 fontColor:MAIN_TINT_COLOR_DARK andDefaultText:@"Drag &\nDrop"];
 	centerCountLabel.numberOfLines = 2;
 	[centerCountLabel sizeToFit];
 	centerCountLabel.textAlignment = NSTextAlignmentCenter;
@@ -217,7 +200,7 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 
 	[UIView animateWithDuration:0.2 animations:^{
 		originalView.frame = CGRectMake(givenObjectLAyer.frame.origin.x, givenObjectLAyer.frame.origin.y, kInnerCirlceLayerWidth, kInnerCirlceLayerWidth);
-		originalView.personImageView.layer.borderColor = [SHDFunctions colorFromHex:@"f3d530"].CGColor;
+		originalView.personImageView.layer.borderColor = MAIN_TINT_COLOR.CGColor;
 	}];
 
 	[innerCircleViewsArray addObject:originalView];
@@ -237,17 +220,11 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 		}
 
 		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d \nfriends", (int)innerCircleViewsArray.count - kMaxOuterPeopleCount]];
-
-		[titleText addAttributes:@{NSForegroundColorAttributeName : [SHDFunctions colorFromHex:@"46361d"]} range:NSMakeRange(0, 1 + rightRange)];
-		[titleText addAttributes:@{NSForegroundColorAttributeName : [SHDFunctions colorFromHex:@"b9931f"]} range:NSMakeRange(1 + rightRange, 7)];
-
+		[titleText addAttributes:@{NSForegroundColorAttributeName : MAIN_TINT_COLOR_DARK} range:NSMakeRange(0, titleText.length)];
 		[centerCountLabel setAttributedText:titleText];
 	}else{
-
 		NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:@"Drag &\nDrop"];
-
-		[titleText addAttributes:@{NSForegroundColorAttributeName : [SHDFunctions colorFromHex:@"b9931f"]} range:NSMakeRange(0, titleText.length)];
-
+		[titleText addAttributes:@{NSForegroundColorAttributeName : MAIN_TINT_COLOR_DARK} range:NSMakeRange(0, titleText.length)];
 		[centerCountLabel setAttributedText:titleText];
 	}
 }
@@ -271,7 +248,6 @@ static const CGFloat kInnerCircleRatioDifference = 58;
 	panGesture.delegate = self;
 	[personView addGestureRecognizer:panGesture];
 	[gridImage addSubview:personView];
-
 	personView.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
 
 	[UIView animateWithDuration:0.2 animations:^{

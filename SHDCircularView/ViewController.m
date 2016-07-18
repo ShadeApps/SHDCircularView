@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "SHDPerson.h"
-#import "SHDFunctions.h"
 #import "SHDCircularView.h"
 
 @interface ViewController ()
@@ -21,9 +20,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.view.backgroundColor = [SHDFunctions colorFromHex:@"202020"];
+	self.view.backgroundColor = MAIN_BACKGROUND_COLOR;
 
-	selectorView = [[SHDCircularView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 340) / 2, self.view.frame.size.width, 340)];
+	selectorView = [[SHDCircularView alloc] initWithFrame:CGRectMake(0, 0, selectorView.frame.size.width, selectorView.frame.size.height)];
+	selectorView.center = self.view.center;
 	[self.view addSubview:selectorView];
 
 	NSMutableArray *mutArr = [NSMutableArray new];
@@ -35,11 +35,6 @@
 	}
 
 	[selectorView placeOuterArrayObjectsFromArray:mutArr];
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
 }
 
 @end

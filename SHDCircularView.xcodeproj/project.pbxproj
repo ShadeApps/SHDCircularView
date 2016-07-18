@@ -31,6 +31,7 @@
 		40657FD71D3C695000DD63E1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		40657FD91D3C695600DD63E1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		40657FDB1D3C6AD100DD63E1 /* imgGrid@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgGrid@2x~ipad.png"; sourceTree = "<group>"; };
+		40657FDD1D3D331D00DD63E1 /* CircularConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularConstants.h; sourceTree = "<group>"; };
 		40C79C351D3C509900833D75 /* SHDCircularView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHDCircularView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C79C391D3C509900833D75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40C79C3B1D3C509900833D75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 				40657FCA1D3C5EB000DD63E1 /* SHDFunctions.m */,
 				40E7D2EB1D3C5497002DEB8A /* SHDPerson.h */,
 				40E7D2EC1D3C5497002DEB8A /* SHDPerson.m */,
+				40657FDD1D3D331D00DD63E1 /* CircularConstants.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
