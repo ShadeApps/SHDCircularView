@@ -123,10 +123,10 @@
 		40657FFD1D3D8E5C00DD63E1 /* Resources & Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				40657FFE1D3D8E5C00DD63E1 /* CircularConstants.h */,
 				40657FFF1D3D8E5C00DD63E1 /* images */,
 				406580041D3D8E5C00DD63E1 /* SHDHelper.h */,
 				406580051D3D8E5C00DD63E1 /* SHDHelper.m */,
+				40657FFE1D3D8E5C00DD63E1 /* CircularConstants.h */,
 			);
 			path = "Resources & Helpers";
 			sourceTree = "<group>";
