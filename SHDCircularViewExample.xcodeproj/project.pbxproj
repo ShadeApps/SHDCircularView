@@ -209,6 +209,7 @@
 		40C79C2D1D3C509900833D75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = ShadeApps;
 				TargetAttributes = {
