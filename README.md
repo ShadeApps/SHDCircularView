@@ -29,4 +29,4 @@ This project uses ARC and is Bitcode compatiable. Project example built on top o
 
 ## Contributing
 
-We'd love to see your ideas for improving this project! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new Github issue](https://github.com/ShadeApps/camera-app-template/issues/new) if you find bugs or have questions. :octocat:
+We'd love to see your ideas for improving this project! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new Github issue](https://github.com/ShadeApps/SHDCircularView/issues/new) if you find bugs or have questions. :octocat:
