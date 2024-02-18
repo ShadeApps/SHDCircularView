@@ -10,7 +10,7 @@ UI component for circular display of long lists with the ability to choose eleme
 
 <p align="center">
 <a href="http://www.shadeapps.com">
-  <img src ="https://media.giphy.com/media/l46Cq6AwllE92dhaU/giphy.gif"/>
+  <img src ="https://github.com/ShadeApps/SHDCircularView/assets/2706049/4815e7b5-e4e6-4c2a-bd9a-248974975a94"/>
 </a>
 </p>
 
